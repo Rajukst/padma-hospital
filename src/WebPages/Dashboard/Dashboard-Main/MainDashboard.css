@@ -1,0 +1,7 @@
+.my-button {
+width: 90%;
+}
+.my-nestedRoute{
+    height: 100vh;
+    border-right: 2px solid blue;
+}

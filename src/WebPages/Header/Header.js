@@ -24,12 +24,17 @@ const Header = () => {
               <Link className="my-link ms-4" to="/about">
                 About Us
               </Link>
+              <Link className="my-link ms-4" to="/dashboard">
+                Dashboard
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <Button variant="outline-info" className="me-5">
-          Login
-        </Button>
+        <Link to="/login">
+          <Button variant="outline-info" className="me-5">
+            Login
+          </Button>
+        </Link>
       </Navbar>
     </div>
   );
