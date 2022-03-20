@@ -1,11 +1,28 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Registration.css";
 const Registration = () => {
   const [loginUser, setLoginUser] = useState({});
   const loginSubmit = (e) => {
+    if (loginUser.password == loginUser.password2) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Password Match! Registration Success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (loginUser.password !== loginUser.password2) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password Don't match!! Try Again",
+      });
+    }
     e.preventDefault();
+    console.log(loginUser);
   };
   const loginOnChange = (e) => {
     const nameField = e.target.name;
