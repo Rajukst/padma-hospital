@@ -59,7 +59,7 @@ const Login = () => {
               Google Sign In
             </Button>
             <Button className="m-3" variant="outline-info">
-              Github Sign In
+              Github SignIn
             </Button>
           </div>
         </form>
