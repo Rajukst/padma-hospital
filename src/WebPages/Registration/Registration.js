@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import React, { useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,13 +7,14 @@ import useAuth from "../../Hooks/useAuth";
 import "./Registration.css";
 const Registration = () => {
   const [loginUser, setLoginUser] = useState({});
-  const { registerUser, isLoading } = useAuth();
+  const { user, registerUser, isLoading, authError } = useAuth();
   const loginSubmit = (e) => {
+    e.preventDefault();
     if (loginUser.password !== loginUser.password2) {
       alert("password dont match");
+      return;
     }
     registerUser(loginUser.email, loginUser.password);
-    e.preventDefault();
     console.log(loginUser);
   };
   const loginOnChange = (e) => {
@@ -89,6 +91,8 @@ const Registration = () => {
             </form>
           )}
           {isLoading && <Spinner animation="grow" variant="info" />}
+          {user?.email && <Alert severity="success">Registration Succes</Alert>}
+          {authError && <Alert severity="error">{authError}</Alert>}
         </div>
       </div>
     </div>

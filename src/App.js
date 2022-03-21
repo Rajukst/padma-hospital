@@ -7,6 +7,7 @@ import MainDashboard from "./WebPages/Dashboard/Dashboard-Main/MainDashboard";
 import Header from "./WebPages/Header/Header";
 import Home from "./WebPages/Home-Section/Home/Home";
 import Login from "./WebPages/Login/Login";
+import PrivateRoute from "./WebPages/Login/PrivateRoute/PrivateRoute";
 import Registration from "./WebPages/Registration/Registration";
 
 function App() {
@@ -28,9 +29,9 @@ function App() {
             <Route path="/register">
               <Registration></Registration>
             </Route>
-            <Route path="/dashboard">
+            <PrivateRoute path="/dashboard">
               <MainDashboard></MainDashboard>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </BrowserRouter>
       </AuthProvider>

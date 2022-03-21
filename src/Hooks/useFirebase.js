@@ -6,39 +6,55 @@ import {
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 initialFirebase();
 const useFirebase = () => {
   const auth = getAuth();
+  const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
+  const [authError, setAuthError] = useState("");
   const registerUser = (email, password) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        // ...
+        setAuthError("");
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        setAuthError(error.message);
         // ..
       })
       .finally(() => setIsLoading(false));
   };
-  const loginUser = (email, password) => {
+  const loginUser = (email, password, location, history) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
         // Signed in
-        const user = userCredential.user;
-        // ...
+        setAuthError("");
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  const signWithGoogle = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setAuthError("");
+      })
+      .catch((error) => {
+        setAuthError(error.message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -72,6 +88,8 @@ const useFirebase = () => {
     registerUser,
     logOut,
     loginUser,
+    authError,
+    signWithGoogle,
   };
 };
 export default useFirebase;

@@ -1,18 +1,27 @@
+import { Alert } from "@mui/material";
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Spinner } from "react-bootstrap";
+import { Link, useLocation, useHistory } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 import "./Login.css";
 const Login = () => {
-  const [loginUser, setLoginUser] = useState({});
+  const [signInUser, setSignInUser] = useState({});
+  const { user, loginUser, signWithGoogle, isLoading, authError } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
   const loginSubmit = (e) => {
+    loginUser(signInUser.email, signInUser.password, location, history);
     e.preventDefault();
   };
   const loginOnChange = (e) => {
     const nameField = e.target.name;
     const fieldValue = e.target.value;
-    const newData = { ...loginUser };
+    const newData = { ...signInUser };
     newData[nameField] = fieldValue;
-    setLoginUser(newData);
+    setSignInUser(newData);
+  };
+  const handleGoogle = () => {
+    signWithGoogle(location, history);
   };
   return (
     <div className="login-div">
@@ -55,7 +64,11 @@ const Login = () => {
                 <Link to="/register">here</Link>
               </p>
             </div>
-            <Button className="m-3" variant="outline-info">
+            <Button
+              onClick={handleGoogle}
+              className="m-3"
+              variant="outline-info"
+            >
               Google Sign In
             </Button>
             <Button className="m-3" variant="outline-info">
@@ -63,6 +76,9 @@ const Login = () => {
             </Button>
           </div>
         </form>
+        {isLoading && <Spinner animation="grow" variant="info" />}
+        {user?.email && <Alert severity="success">Login Succes</Alert>}
+        {authError && <Alert severity="error">{authError}</Alert>}
       </div>
     </div>
   );
