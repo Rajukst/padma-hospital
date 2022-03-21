@@ -1,0 +1,41 @@
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import MyCalender from "../../Shared/MyCalender";
+import BookingConfirm from "../BookingConfirm/BookingConfirm";
+
+const SingleDoctor = () => {
+  const [doctor, setDoctor] = useState({});
+  const { serviceId } = useParams();
+  useEffect(() => {
+    fetch(`http://localhost:5000/doctors/${serviceId}`)
+      .then((res) => res.json())
+      .then((data) => setDoctor(data));
+  }, []);
+  return (
+    <div>
+      <h1>This is Single Doctor</h1>
+      <Container>
+        <Row>
+          <Col xs={12} md={5} lg={5}>
+            <img
+              src={doctor?.image}
+              alt="Girl in a jacket"
+              width="500"
+              height="600"
+            />
+          </Col>
+          <Col xs={12} md={7} lg={7}>
+            <h1>Doctor name: {doctor?.name}</h1>
+            <h2>Designation: {doctor?.designation}</h2>
+            <p>Information: {doctor?.description}</p>
+            <MyCalender></MyCalender>
+          </Col>
+        </Row>
+      </Container>
+      <BookingConfirm></BookingConfirm>
+    </div>
+  );
+};
+
+export default SingleDoctor;

@@ -7,14 +7,16 @@ const AddDoctor = () => {
   const doctorImage = useRef();
   const doctorDesignation = useRef();
   const doctorPosition = useRef();
+  const serviceFee = useRef();
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const name = doctorName.current.value;
     const image = doctorImage.current.value;
-    const designation = doctorImage.current.value;
+    const designation = doctorDesignation.current.value;
+    const fee = serviceFee.current.value;
     const description = doctorPosition.current.value;
-    const totalBio = { name, image, designation, description };
+    const totalBio = { name, image, designation, fee, description };
     console.log(totalBio);
     fetch("http://localhost:5000/add-doctors", {
       method: "POST",
@@ -48,6 +50,16 @@ const AddDoctor = () => {
           id=""
           ref={doctorName}
           placeholder="Doctor's Name"
+          required
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          name=""
+          id=""
+          ref={serviceFee}
+          placeholder="Service Charge"
           required
         />
         <br />

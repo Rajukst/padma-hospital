@@ -1,12 +1,13 @@
 import { Alert } from "@mui/material";
 import React, { useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import "./Registration.css";
 const Registration = () => {
   const [loginUser, setLoginUser] = useState({});
+  const history = useHistory();
   const { user, registerUser, isLoading, authError } = useAuth();
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +15,7 @@ const Registration = () => {
       alert("password dont match");
       return;
     }
-    registerUser(loginUser.email, loginUser.password);
+    registerUser(loginUser.email, loginUser.password, loginUser.name, history);
     console.log(loginUser);
   };
   const loginOnChange = (e) => {

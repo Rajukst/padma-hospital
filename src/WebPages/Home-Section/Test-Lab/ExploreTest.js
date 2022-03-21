@@ -1,19 +1,22 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import MyRattings from "../../Shared/MyRattings";
 
-const ExploreTest = ({ getTestData }) => {
+const ExploreTest = ({ myTest }) => {
+  const { _id, name, image, designation } = myTest;
   return (
     <div>
       <Col>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={image} />
           <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text>
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
+            <Card.Title>Name: {name}</Card.Title>
+            <Card.Title>Designation: {designation}</Card.Title>
+            <MyRattings></MyRattings>
+            <Link to={`/doctors/${_id}`}>
+              <Button variant="outline-dark">View Profile</Button>
+            </Link>
           </Card.Body>
         </Card>
       </Col>

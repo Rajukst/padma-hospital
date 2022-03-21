@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import AddDoctor from "../Admin/AddDoctor/AddDoctor";
 import ManageInfo from "../Admin/ManageInfo/ManageInfo";
 import MyAppoint from "../User/MyAppoint/MyAppoint";
+import Review from "../User/Review/Review";
 import "./MainDashboard.css";
 const MainDashboard = () => {
   let { path, url } = useRouteMatch();
@@ -45,6 +46,9 @@ const MainDashboard = () => {
             <Switch>
               <Route path={`${path}/my-appoint`}>
                 <MyAppoint></MyAppoint>
+              </Route>
+              <Route path={`${path}/user-review`}>
+                <Review></Review>
               </Route>
               <Route path={`${path}/add-course`}>
                 <AddDoctor></AddDoctor>

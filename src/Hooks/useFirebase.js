@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 initialFirebase();
 const useFirebase = () => {
@@ -16,12 +17,27 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
-  const registerUser = (email, password) => {
+  const registerUser = (email, password, history, name) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         setAuthError("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        // send to firebase
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+        history.replace("/");
       })
       .catch((error) => {
         const errorCode = error.code;

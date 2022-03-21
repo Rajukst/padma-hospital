@@ -5,11 +5,14 @@ import useAuth from "../../Hooks/useAuth";
 import "./Header.css";
 const Header = () => {
   const { user, logOut } = useAuth();
+  console.log(user);
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Padma Diagnostic Centre Limited</Navbar.Brand>
+          <Link className="my-link ms-4" to="/">
+            Padma Diagnostic Centre Limited
+          </Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -32,6 +35,7 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <div className="me-2 text-light">Logged As: {user.displayName}</div>
         {user.email ? (
           <Button onClick={logOut} variant="outline-info" className="me-5">
             LogOut
