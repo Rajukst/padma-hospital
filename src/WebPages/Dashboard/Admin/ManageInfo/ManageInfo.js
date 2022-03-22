@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const ManageInfo = () => {
   const [update, setUpdate] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/doctors")
+    fetch("https://protected-basin-36315.herokuapp.com/doctors")
       .then((res) => res.json())
       .then((data) => setUpdate(data));
   }, []);
@@ -14,7 +14,7 @@ const ManageInfo = () => {
   const handleDeleteUser = (id) => {
     const proceed = window.confirm("are you sure to delete a Doctor?");
     if (proceed) {
-      const url = `http://localhost:5000/delete/${id}`;
+      const url = `https://protected-basin-36315.herokuapp.com/delete/${id}`;
       fetch(url, {
         method: "DELETE",
       })

@@ -9,7 +9,7 @@ const Review = () => {
     const getReview = userReview.current.value;
     const totalReview = { getReview };
     console.log(totalReview);
-    fetch("http://localhost:5000/get-review", {
+    fetch("https://protected-basin-36315.herokuapp.com/get-review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

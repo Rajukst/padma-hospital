@@ -7,7 +7,7 @@ const SingleDoctor = () => {
   const [doctor, setDoctor] = useState({});
   const { serviceId } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/doctors/${serviceId}`)
+    fetch(`https://protected-basin-36315.herokuapp.com/doctors/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setDoctor(data));
   }, []);

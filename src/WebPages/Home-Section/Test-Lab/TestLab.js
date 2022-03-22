@@ -5,7 +5,7 @@ import ExploreTest from "./ExploreTest";
 const TestLab = () => {
   const [testLab, setTestLab] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/doctors")
+    fetch("https://protected-basin-36315.herokuapp.com/doctors")
       .then((res) => res.json())
       .then((data) => setTestLab(data));
   }, []);

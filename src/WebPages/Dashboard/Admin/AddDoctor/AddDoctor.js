@@ -18,7 +18,7 @@ const AddDoctor = () => {
     const description = doctorPosition.current.value;
     const totalBio = { name, image, designation, fee, description };
     console.log(totalBio);
-    fetch("http://localhost:5000/add-doctors", {
+    fetch("https://protected-basin-36315.herokuapp.com/add-doctors", {
       method: "POST",
       headers: {
         "content-type": "application/json",

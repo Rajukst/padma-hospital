@@ -6,7 +6,7 @@ const MyAppoint = () => {
   const { user } = useAuth();
   const [myAppoints, setMyAppoints] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/my-appoints")
+    fetch("https://protected-basin-36315.herokuapp.com/my-appoints")
       .then((res) => res.json())
       .then((data) => setMyAppoints(data));
   }, []);

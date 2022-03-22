@@ -9,7 +9,7 @@ const BookingConfirm = () => {
   const { user } = useAuth();
   const { serviceId } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/doctors/${serviceId}`)
+    fetch(`https://protected-basin-36315.herokuapp.com/doctors/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -22,7 +22,7 @@ const BookingConfirm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/appoints", {
+    fetch("https://protected-basin-36315.herokuapp.com/appoints", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

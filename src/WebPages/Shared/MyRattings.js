@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 const MyRattings = () => {
   const [value, setValue] = useState(0);
   useEffect(() => {
-    fetch("http://localhost:5000/my-review")
+    fetch("https://protected-basin-36315.herokuapp.com/my-review")
       .then((res) => res.json())
       .then((data) => setValue(data));
   }, []);
