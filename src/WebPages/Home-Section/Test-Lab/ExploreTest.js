@@ -17,6 +17,9 @@ const ExploreTest = ({ myTest }) => {
             <Link to={`/doctors/${_id}`}>
               <Button variant="outline-dark">View Profile</Button>
             </Link>
+            <Link to={`/booking-page/${_id}`}>
+              <Button variant="outline-dark">Appoint Now</Button>
+            </Link>
           </Card.Body>
         </Card>
       </Col>

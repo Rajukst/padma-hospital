@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import MainDashboard from "./WebPages/Dashboard/Dashboard-Main/MainDashboard";
-import DoctorsList from "./WebPages/DoctorsList/DoctorsList";
 import Header from "./WebPages/Header/Header";
 import BookingConfirm from "./WebPages/Home-Section/BookingConfirm/BookingConfirm";
 import Home from "./WebPages/Home-Section/Home/Home";
@@ -35,9 +34,6 @@ function App() {
             </Route>
             <Route path="/test">
               <Test></Test>
-            </Route>
-            <Route path="/doctors">
-              <DoctorsList></DoctorsList>
             </Route>
             <PrivateRoute path="/doctors/:serviceId">
               <SingleDoctor></SingleDoctor>

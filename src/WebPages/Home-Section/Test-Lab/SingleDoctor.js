@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import MyCalender from "../../Shared/MyCalender";
-import BookingConfirm from "../BookingConfirm/BookingConfirm";
 
 const SingleDoctor = () => {
   const [doctor, setDoctor] = useState({});
@@ -33,7 +32,6 @@ const SingleDoctor = () => {
           </Col>
         </Row>
       </Container>
-      <BookingConfirm></BookingConfirm>
     </div>
   );
 };

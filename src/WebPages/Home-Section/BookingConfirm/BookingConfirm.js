@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 const BookingConfirm = () => {
   const [product, setProduct] = useState({});
-
+  const { user } = useAuth();
   const { serviceId } = useParams();
-  console.log(serviceId._id);
   useEffect(() => {
     fetch(`http://localhost:5000/doctors/${serviceId}`)
       .then((res) => res.json())
@@ -27,22 +28,44 @@ const BookingConfirm = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Appoint Confirmed !!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log(data);
+        }
+      });
   };
   return (
     <div>
-      <h1>This is Booking Confirm</h1>
+      <h1>Appoint Confirm Form</h1>
       <div className="my-div">
         <Container>
           <Row className="mt-5">
             <Col xs={12} md={4} lg={4}>
               <img src={product.image} alt="" />
-              <h1> Total Price: {product?.price}</h1>
-              <h4>Product Description: {product.description} </h4>
+              <h1> Appoint: {product?.price}</h1>
+              <h4>About Doctor: {product.description} </h4>
             </Col>
             <Col xs={12} md={8} lg={8}>
-              <h2>To Buy Product Please Fillup this Form</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  {...register("displayName")}
+                  value={user?.displayName}
+                  className="p-2 m-2 w-100"
+                />
+                <br />
+                <input
+                  {...register("email")}
+                  value={user?.email}
+                  className="p-2 m-2 w-100"
+                />
+                <br />
                 <input
                   {...register("name")}
                   defaultValue={product?.name}
@@ -81,7 +104,7 @@ const BookingConfirm = () => {
 
                 <input
                   type="submit"
-                  value="Order Now"
+                  value="Appoint"
                   className="btn btn-info w-50"
                 />
               </form>

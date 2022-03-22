@@ -5,6 +5,7 @@ import { Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import AddDoctor from "../Admin/AddDoctor/AddDoctor";
+import MakeAdmin from "../Admin/MakeAdmin/MakeAdmin";
 import ManageInfo from "../Admin/ManageInfo/ManageInfo";
 import MyAppoint from "../User/MyAppoint/MyAppoint";
 import Review from "../User/Review/Review";
@@ -31,6 +32,11 @@ const MainDashboard = () => {
                 Add Doctor
               </Button>
             </Link>
+            <Link className="remove" to={`${url}/make-admin`}>
+              <Button className="mt-4 my-button" color="inherit">
+                Make Admin
+              </Button>
+            </Link>
             <Link className="remove" to={`${url}/manage`}>
               <Button className="mt-4 my-button" color="inherit">
                 Manage Info
@@ -52,6 +58,9 @@ const MainDashboard = () => {
               </Route>
               <Route path={`${path}/add-course`}>
                 <AddDoctor></AddDoctor>
+              </Route>
+              <Route path={`${path}/make-admin`}>
+                <MakeAdmin></MakeAdmin>
               </Route>
               <Route path={`${path}/manage`}>
                 <ManageInfo></ManageInfo>
