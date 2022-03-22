@@ -17,17 +17,20 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
-  const registerUser = (email, password, history, name) => {
+  const registerUser = (email, password, name, history) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         setAuthError("");
+       
+        // console.log(newUser);
+        // send to firebase
         const newUser = { email, displayName: name };
         setUser(newUser);
         // send to firebase
         updateProfile(auth.currentUser, {
-          displayName: name,
+          displayName: name
         })
           .then(() => {
             // Profile updated!
@@ -37,7 +40,7 @@ const useFirebase = () => {
             // An error occurred
             // ...
           });
-        history.replace("/");
+          history.replace("/")
       })
       .catch((error) => {
         const errorCode = error.code;

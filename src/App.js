@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import MainDashboard from "./WebPages/Dashboard/Dashboard-Main/MainDashboard";
+import Footer from "./WebPages/Footer/Footer";
 import Header from "./WebPages/Header/Header";
 import BookingConfirm from "./WebPages/Home-Section/BookingConfirm/BookingConfirm";
 import Home from "./WebPages/Home-Section/Home/Home";
@@ -45,6 +46,7 @@ function App() {
               <MainDashboard></MainDashboard>
             </PrivateRoute>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>
