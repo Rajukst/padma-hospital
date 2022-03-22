@@ -15,7 +15,7 @@ const SingleDoctor = () => {
     <div>
       <h1>This is Single Doctor</h1>
       <Container>
-        <Row>
+        <Row className="g-5 m-1">
           <Col xs={12} md={5} lg={5}>
             <img
               src={doctor?.image}

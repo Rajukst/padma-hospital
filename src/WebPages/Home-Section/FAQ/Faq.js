@@ -5,7 +5,7 @@ const Faq = () => {
   return (
     <div>
       <Container className="mt-5">
-        <Row>
+        <Row className="g-5 m-1">
           <Col xs={12} md={6}>
             <Accordion>
               <Accordion.Item className="mt-4" eventKey="0">
