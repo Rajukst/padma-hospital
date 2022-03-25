@@ -5,9 +5,11 @@ import { useParams } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
 const BookingConfirm = () => {
-  const [product, setProduct] = useState({});
   const { user } = useAuth();
+  const [product, setProduct] = useState({});
+
   const { serviceId } = useParams();
+
   useEffect(() => {
     fetch(`https://protected-basin-36315.herokuapp.com/doctors/${serviceId}`)
       .then((res) => res.json())
@@ -47,23 +49,27 @@ const BookingConfirm = () => {
       <div className="my-div">
         <Container>
           <Row className="mt-5">
-            <Col xs={12} md={4} lg={4}>
+            <Col xs={12} md={5} lg={5}>
               <img src={product.image} alt="" />
-              <h1> Appoint: {product?.price}</h1>
+              <h1> Doctor Name: {product?.name}</h1>
+              <h1> Designation: {product?.designation}</h1>
+              <h4>Fees: {product.fee} </h4>
               <h4>About Doctor: {product.description} </h4>
             </Col>
-            <Col xs={12} md={8} lg={8}>
+            <Col xs={12} md={7} lg={7}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                   {...register("displayName")}
-                  value={user?.displayName}
+                  defaultValue={user?.displayName}
                   className="p-2 m-2 w-100"
+                  name="patientName"
                 />
                 <br />
                 <input
                   {...register("email")}
-                  value={user?.email}
+                  defaultValue={user?.email}
                   className="p-2 m-2 w-100"
+                  name="email"
                 />
                 <br />
                 <input

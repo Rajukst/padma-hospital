@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
+import AddTest from "../Admin/Add-Test/AddTest";
 import AddDoctor from "../Admin/AddDoctor/AddDoctor";
 import MakeAdmin from "../Admin/MakeAdmin/MakeAdmin";
 import ManageInfo from "../Admin/ManageInfo/ManageInfo";
@@ -27,9 +28,14 @@ const MainDashboard = () => {
                 User Review
               </Button>
             </Link>
-            <Link className="remove" to={`${url}/add-course`}>
+            <Link className="remove" to={`${url}/add-doctor`}>
               <Button className="mt-4 my-button" color="inherit">
                 Add Doctor
+              </Button>
+            </Link>
+            <Link className="remove" to={`${url}/add-test`}>
+              <Button className="mt-4 my-button" color="inherit">
+                Add Medical Test
               </Button>
             </Link>
             <Link className="remove" to={`${url}/make-admin`}>
@@ -56,8 +62,11 @@ const MainDashboard = () => {
               <Route path={`${path}/user-review`}>
                 <Review></Review>
               </Route>
-              <Route path={`${path}/add-course`}>
+              <Route path={`${path}/add-doctor`}>
                 <AddDoctor></AddDoctor>
+              </Route>
+              <Route path={`${path}/add-test`}>
+                <AddTest></AddTest>
               </Route>
               <Route path={`${path}/make-admin`}>
                 <MakeAdmin></MakeAdmin>

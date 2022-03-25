@@ -11,7 +11,7 @@ const TestLab = () => {
   }, []);
   return (
     <div>
-      <h1>This is Test Lab</h1>
+      <h1>Our Doctor's</h1>
       <Row xs={1} md={4} className="g-5 m-1">
         {testLab.map((getTestData) => (
           <ExploreTest key={getTestData._id} myTest={getTestData}></ExploreTest>

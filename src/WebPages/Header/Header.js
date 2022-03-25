@@ -34,8 +34,9 @@ const Header = () => {
               </Link>
             </Nav>
           </Navbar.Collapse>
+         {user.email &&  <div className="wellcome-div"> <span className="wellcome-span me-1">WellCome: </span> {user.displayName}</div>}
         </Container>
-        <div className="me-2 text-light">Logged As: {user.displayName}</div>
+       
         {user.email ? (
           <Button onClick={logOut} variant="outline-info" className="me-5">
             LogOut

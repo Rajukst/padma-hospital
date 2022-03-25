@@ -1,0 +1,8 @@
+.link-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.alignmet-card{
+    text-align: justify;
+}

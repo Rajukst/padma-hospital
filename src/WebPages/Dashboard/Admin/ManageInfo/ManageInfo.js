@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 const ManageInfo = () => {
@@ -37,40 +37,42 @@ const ManageInfo = () => {
     }
   };
   return (
-    <div>
-      <h1>This is Manage Products</h1>
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>Doctor Id</th>
-            <th> Name</th>
-            <th>Designation</th>
-            <th>Short Description</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {update.map((myRow) => (
-            <tr>
-              <td>{myRow._id}</td>
-              <td>{myRow.name}</td>
-              <td>{myRow.designation}</td>
-              <td>{myRow.description}</td>
-
-              <td>
-                <Button
-                  onClick={() => handleDeleteUser(myRow._id)}
-                  className="my-button"
-                  variant="danger"
-                >
-                  Delete
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
+    <Container fluid>
+      <Row>
+        <Col>
+          <h1>This is Manage Products</h1>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>Doctor Id</th> <th> Name</th> <th>Designation</th>
+                <th>Short Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {update.map((myRow) => (
+                <tr>
+                  {" "}
+                  <td>{myRow._id}</td>
+                  <td>{myRow.name}</td>
+                  <td>{myRow.designation}</td>
+                  <td>{myRow.description}</td>
+                  <td>
+                    <Button
+                      onClick={() => handleDeleteUser(myRow._id)}
+                      className="my-button"
+                      variant="danger"
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Ambulence from "../Ambulence/Ambulence";
 import HomeCarosul from "../Carosul-Section/HomeCarosul";
 import CustomerAmbulence from "../Customer-and-Ambulence/CustomerAmbulence";
 import Faq from "../FAQ/Faq";
@@ -8,9 +9,10 @@ const Home = () => {
   return (
     <div>
       <HomeCarosul></HomeCarosul>
-      {/* <CustomerAmbulence></CustomerAmbulence> */}
+      <CustomerAmbulence></CustomerAmbulence>
+      <Ambulence></Ambulence>
       <TestLab></TestLab>
-      <Faq></Faq>
+      {/* <Faq></Faq> */}
     </div>
   );
 };

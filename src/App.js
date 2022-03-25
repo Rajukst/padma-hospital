@@ -13,6 +13,7 @@ import Login from "./WebPages/Login/Login";
 import PrivateRoute from "./WebPages/Login/PrivateRoute/PrivateRoute";
 import Registration from "./WebPages/Registration/Registration";
 import Test from "./WebPages/TestingUnit/Test";
+import TestProfile from "./WebPages/TestingUnit/Test-Profile/TestProfile";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <PrivateRoute path="/doctors/:serviceId">
               <SingleDoctor></SingleDoctor>
+            </PrivateRoute>
+            <PrivateRoute path="/labtest/:serviceId">
+              <TestProfile></TestProfile>
             </PrivateRoute>
             <PrivateRoute path="/booking-page/:serviceId">
               <BookingConfirm></BookingConfirm>

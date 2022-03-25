@@ -6,7 +6,8 @@ const MyAppoint = () => {
   const { user } = useAuth();
   const [myAppoints, setMyAppoints] = useState([]);
   useEffect(() => {
-    fetch("https://protected-basin-36315.herokuapp.com/my-appoints")
+    const url = `http://localhost:5000/my-appoints?email=${user.email}`;
+    fetch(url)
       .then((res) => res.json())
       .then((data) => setMyAppoints(data));
   }, []);
@@ -20,6 +21,7 @@ const MyAppoint = () => {
             <tr>
               <th>Doctor Id</th>
               <th>Doctor Name</th>
+              <th>Patient Name</th>
               <th>Appoint Date</th>
               <th>Your Address</th>
               <th> Approval</th>
@@ -30,6 +32,7 @@ const MyAppoint = () => {
               <tr>
                 <td>{myRow._id}</td>
                 <td>{myRow.name}</td>
+                <td>{user.displayName}</td>
                 <td>{myRow.date}</td>
                 <td>{myRow.address}</td>
                 <td>

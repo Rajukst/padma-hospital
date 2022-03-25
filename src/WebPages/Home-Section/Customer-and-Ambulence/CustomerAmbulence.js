@@ -9,37 +9,27 @@ const CustomerAmbulence = () => {
       <h1>This is Customer and ambulence</h1>
       <Container fluid>
         <Row>
-          <Col xs={12} md={6}>
+          <Col className="p-1" xs={12} md={6}>
             <div className="main-div">
               <div>
                 <img
                   src={picOne}
                   alt="Girl in a jacket"
-                  width="500"
-                  height="600"
+                  className="img-fluid" 
                 />
               </div>
-              <div className="mt-5">
-                <ul>
+         
+            </div>
+          </Col>
+          <Col className="p-1"  xs={12} md={6}>
+            <div>
+            <ul>
                   <li>24 hour Patiant Support</li>
                   <li>Experienced Doctors</li>
                   <li>Modern Labretories</li>
                   <li>Aircondion Facilities</li>
                   <li>24 hour Pharmacy Management</li>
-                  <li>24 hour Ambulence Service</li>
-                  <li>01531000000 (Ambulence)</li>
                 </ul>
-              </div>
-            </div>
-          </Col>
-          <Col xs={12} md={6}>
-            <div>
-              <img
-                src={picTwo}
-                alt="Girl in a jacket"
-                width="500"
-                height="600"
-              />
             </div>
           </Col>
         </Row>

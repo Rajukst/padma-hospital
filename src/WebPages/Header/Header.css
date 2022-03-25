@@ -4,3 +4,11 @@
     font-size: 18px;
     color: white;
 }
+.wellcome-div{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.wellcome-span{
+    color: aqua;
+}
