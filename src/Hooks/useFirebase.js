@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
+  const [admin, setAdmin]= useState(false);
   const registerUser = (email, password, name, history) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
@@ -95,6 +96,12 @@ const useFirebase = () => {
     });
     return () => unsubscribe;
   }, []);
+  // verifying user is admin or just a user on client side
+  useEffect(()=>{
+fetch(`http://localhost:5000/users/${user.email}`)
+.then(res=>res.json())
+.then(data=>setAdmin(data.admin))
+  },[user.email])
   const logOut = () => {
     setIsLoading(true);
     signOut(auth)
@@ -126,6 +133,7 @@ const useFirebase = () => {
     loginUser,
     authError,
     signWithGoogle,
+    admin
   };
 };
 export default useFirebase;

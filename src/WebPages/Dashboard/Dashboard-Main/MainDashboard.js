@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import AddTest from "../Admin/Add-Test/AddTest";
 import AddDoctor from "../Admin/AddDoctor/AddDoctor";
 import MakeAdmin from "../Admin/MakeAdmin/MakeAdmin";
@@ -13,6 +14,7 @@ import Review from "../User/Review/Review";
 import "./MainDashboard.css";
 const MainDashboard = () => {
   let { path, url } = useRouteMatch();
+  const {admin}= useAuth();
   return (
     <div className="my-dashboard">
       <Container fluid>
@@ -28,7 +30,9 @@ const MainDashboard = () => {
                 User Review
               </Button>
             </Link>
-            <Link className="remove" to={`${url}/add-doctor`}>
+           {admin &&  
+          <div>
+             <Link className="remove" to={`${url}/add-doctor`}>
               <Button className="mt-4 my-button" color="inherit">
                 Add Doctor
               </Button>
@@ -53,6 +57,10 @@ const MainDashboard = () => {
                 Update Info
               </Button>
             </Link>
+          </div>
+            }
+           
+            
           </Col>
           <Col xs={12} md={10} lg={10}>
             <Switch>

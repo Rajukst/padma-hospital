@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-
+import Swal from "sweetalert2";
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
   const handleOnSubmit = (e) => {
@@ -14,6 +14,15 @@ const MakeAdmin = () => {
     })
     .then(res=>res.json())
     .then(data=>{
+      if(data.modifiedCount){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
       console.log(data)
     })
     e.preventDefault();
@@ -43,6 +52,7 @@ const MakeAdmin = () => {
           Make Admin
         </Button>
       </form>
+ 
     </div>
   );
 };
