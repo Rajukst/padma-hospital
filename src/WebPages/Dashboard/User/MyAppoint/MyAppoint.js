@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import useAuth from "../../../../Hooks/useAuth";
-
+import "./MyAppoint.css"
 const MyAppoint = () => {
   const { user } = useAuth();
   const [myAppoints, setMyAppoints] = useState([]);
@@ -14,7 +14,7 @@ const MyAppoint = () => {
   return (
     <div>
       <h1>My Appoints</h1>
-      <h4>User Email: {user.email}</h4>
+      <h4 className="left-alignment">User Email: {user.email}</h4>
       <div>
         <Table striped bordered hover variant="dark">
           <thead>

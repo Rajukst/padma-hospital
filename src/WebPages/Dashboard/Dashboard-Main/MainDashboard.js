@@ -5,6 +5,7 @@ import { Switch } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 import AddTest from "../Admin/Add-Test/AddTest";
 import AddDoctor from "../Admin/AddDoctor/AddDoctor";
 import MakeAdmin from "../Admin/MakeAdmin/MakeAdmin";
@@ -70,18 +71,18 @@ const MainDashboard = () => {
               <Route path={`${path}/user-review`}>
                 <Review></Review>
               </Route>
-              <Route path={`${path}/add-doctor`}>
+              <AdminRoute path={`${path}/add-doctor`}>
                 <AddDoctor></AddDoctor>
-              </Route>
-              <Route path={`${path}/add-test`}>
+              </AdminRoute>
+              <AdminRoute path={`${path}/add-test`}>
                 <AddTest></AddTest>
-              </Route>
-              <Route path={`${path}/make-admin`}>
+              </AdminRoute>
+              <AdminRoute path={`${path}/make-admin`}>
                 <MakeAdmin></MakeAdmin>
-              </Route>
-              <Route path={`${path}/manage`}>
+              </AdminRoute>
+              <AdminRoute path={`${path}/manage`}>
                 <ManageInfo></ManageInfo>
-              </Route>
+              </AdminRoute>
             </Switch>
           </Col>
         </Row>
