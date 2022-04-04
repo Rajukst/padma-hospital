@@ -5,7 +5,7 @@ const TestProfile = () => {
   const { serviceId } = useParams();
   const [labTest, setLabTest] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/lab-test/${serviceId}`)
+    fetch(`https://protected-basin-36315.herokuapp.com/lab-test/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setLabTest(data));
   }, []);

@@ -16,7 +16,7 @@ const AddTest = () => {
     const fee = serviceFee.current.value;
     const totalBio = { name, image, fee, description };
     console.log(totalBio);
-    fetch("http://localhost:5000/add-test", {
+    fetch("https://protected-basin-36315.herokuapp.com/add-test", {
       method: "POST",
       headers: {
         "content-type": "application/json",
